@@ -2,6 +2,7 @@ local sprotoparser = require "sprotoparser"
 
 local proto = {}
 
+-- 参数，数组？可空？
 proto.c2s = sprotoparser.parse [[
 .package {
 	type 0 : integer
@@ -41,7 +42,6 @@ hi 5 {
 cmd 6 {
 	request {
 		what 0 : string
-		params 1 : string
 	}
 }
 

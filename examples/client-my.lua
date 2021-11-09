@@ -114,13 +114,8 @@ local function mysplit (inputstr, sep)
 	return t
 end
 
-
-print("handshake")
 send_request("handshake")
 send_request("set", { what = "hello", value = "world" })
--- send_request("get", { what = "hello"})
--- dispatch_package()
--- print("test client end")
 while true do
 	dispatch_package()
 	local cmd = socket.readstdin()
@@ -134,8 +129,9 @@ while true do
 			send_request("set", { what = strList[2], value = strList[3] })
 		elseif strList[1] == "hi" then
 			send_request("hi")
+		elseif strList[1] == "cmd" then
+			send_request("cmd", { what = strList[2] })
 		else
-			-- send_request(strList[1], { what = cmd })
 			send_request("get", { what = cmd })
 		end
 		-- if cmd == "quit" then

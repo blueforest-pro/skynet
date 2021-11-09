@@ -28,7 +28,15 @@ end
 
 -- test :hi
 function REQUEST:hi()
+	print("test agen-my,REQUEST:hi")
 	return { msg = "agent-my: hi" }
+end
+
+-- test :cmd
+function REQUEST:cmd()
+	-- return { command = self.what}
+	print("test agen-my,REQUEST:cmd")
+	return { msg = "agent-my: command" }
 end
 
 
@@ -62,6 +70,7 @@ skynet.register_protocol {
 		skynet.trace()
 		if type == "REQUEST" then
 			local ok, result  = pcall(request, ...)
+			print("test agen-my,register_protocol:",...)
 			if ok then
 				if result then
 					send_package(result)
