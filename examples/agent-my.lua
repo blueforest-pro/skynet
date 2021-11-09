@@ -23,7 +23,7 @@ function REQUEST:set()
 end
 
 function REQUEST:handshake()
-	return { msg = "Welcome to skynet, I will send heartbeat every 5 sec." }
+	return { msg = "agent-my: Welcome to skynet, I will send heartbeat every 5 sec." }
 end
 
 function REQUEST:quit()

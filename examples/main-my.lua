@@ -11,7 +11,7 @@ skynet.start(function()
 	end
 	skynet.newservice("debug_console",8000)
 	skynet.newservice("simpledb")
-	local watchdog = skynet.newservice("watchdog")
+	local watchdog = skynet.newservice("watchdog-my")
 	skynet.call(watchdog, "lua", "start", {
 		port = 8888,
 		maxclient = max_client,
