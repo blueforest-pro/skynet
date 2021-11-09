@@ -6,7 +6,8 @@ if _VERSION ~= "Lua 5.4" then
 end
 
 local socket = require "client.socket"
-local proto = require "proto"
+-- local proto = require "proto"
+local proto = require "proto-my"
 local sproto = require "sproto"
 
 local host = sproto.new(proto.s2c):host "package"
@@ -51,6 +52,7 @@ end
 
 local session = 0
 
+-- 发送消息
 local function send_request(name, args)
 	session = session + 1
 	local str = request(name, args, session)
@@ -131,7 +133,7 @@ while true do
 		elseif strList[1] == "set" then
 			send_request("set", { what = strList[2], value = strList[3] })
 		else
-			send_request("get", { what = cmd })
+			send_request(strList[1], { what = cmd })
 		end
 		-- if cmd == "quit" then
 		-- 	send_request("quit")

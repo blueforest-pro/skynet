@@ -26,6 +26,12 @@ function REQUEST:handshake()
 	return { msg = "agent-my: Welcome to skynet, I will send heartbeat every 5 sec." }
 end
 
+-- test :hi
+function REQUEST:hi()
+	return { msg = "agent-my: hi" }
+end
+
+
 function REQUEST:quit()
 	skynet.call(WATCHDOG, "lua", "close", client_fd)
 end
@@ -43,6 +49,7 @@ local function send_package(pack)
 	socket.write(client_fd, package)
 end
 
+-- register_protocol(class) 在当前服务类注册一类消息的处理机制
 skynet.register_protocol {
 	name = "client",
 	id = skynet.PTYPE_CLIENT,
@@ -95,6 +102,7 @@ end
 skynet.start(function()
 	skynet.dispatch("lua", function(_,_, command, ...)
 		skynet.trace()
+		print("test agen-my,cmd:"..command)
 		local f = CMD[command]
 		skynet.ret(skynet.pack(f(...)))
 	end)
