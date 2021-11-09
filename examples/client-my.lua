@@ -132,8 +132,11 @@ while true do
 			send_request("get", { what = strList[2] })
 		elseif strList[1] == "set" then
 			send_request("set", { what = strList[2], value = strList[3] })
+		elseif strList[1] == "hi" then
+			send_request("hi")
 		else
-			send_request(strList[1], { what = cmd })
+			-- send_request(strList[1], { what = cmd })
+			send_request("get", { what = cmd })
 		end
 		-- if cmd == "quit" then
 		-- 	send_request("quit")

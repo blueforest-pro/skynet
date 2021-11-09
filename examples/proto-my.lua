@@ -40,7 +40,7 @@ hi 5 {
 
 cmd 6 {
 	request {
-		name 0 : string
+		what 0 : string
 		params 1 : string
 	}
 }
